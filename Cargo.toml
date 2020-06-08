@@ -1,8 +1,14 @@
 [package]
 name = "yaksay"
 version = "1.0.0"
-authors = ["DiscoBiscuit99 <creme3sandwich@gmail.com>"]
+authors = ["Valdemar Lorenzen <valdemar.lorenzen@gmail.com>"]
 edition = "2018"
+description = "Enhanced edition of cowsay"
+readme = "README.md"
+repository = "https://github.com/discobiscuit99/yaksay"
+license = "MIT"
+keywords = ["cli"]
+categories = ["command-line-utilities"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
