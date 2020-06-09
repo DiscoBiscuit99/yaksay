@@ -1,9 +1,12 @@
 <div align="center">
 	<h1 style="text-align: center">Yaksay &ndash; Cowsay enhanced, maybe</h1>
-	<img src="yaksay-preview.png" alt="Yaksay preview">
 </div>
 
 To install the program, run `cargo install yaksay` in your terminal. If you haven't changed your cargo install directory, it will be installed to the .cargo/bin folder.
+
+<div align="center">
+	<img src="yaksay-preview.png" alt="Yaksay preview">
+</div>
 
 Running the command `yaksay` in the terminal will spawn the default yak saying "Mooh!". The program can of course also be run with a custom input string, like `yaksay "Hello, World!"`. (Be aware that it might be required to prepend a backslash to exclamation marks like so '\!').
 
