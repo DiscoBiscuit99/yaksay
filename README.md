@@ -1,6 +1,10 @@
-# Yaksay &ndash; Cowsay enhanced, maybe
+<h1 style="text-align: center">Yaksay &ndash; Cowsay enhanced, maybe</h1>
 
-To install the program, run `cargo install yaksay` in your terminal. If you haven't changed your cargo install directory, it will then be installed to the .cargo/bin folder.
+<hr>
+
+<img align="center" src="yaksay-preview.png" alt="Yaksay preview">
+
+To install the program, run `cargo install yaksay` in your terminal. If you haven't changed your cargo install directory, it will be installed to the .cargo/bin folder.
 
 Running the command `yaksay` in the terminal will spawn the default yak saying "Mooh!". The program can of course also be run with a custom input string, like `yaksay "Hello, World!"`. (Be aware that it might be required to prepend a backslash to exclamation marks like so '\!').
 
