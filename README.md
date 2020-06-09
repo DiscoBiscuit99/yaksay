@@ -8,7 +8,7 @@ Running the command `yaksay` in the terminal will spawn the default yak saying "
 
 ![Yaksay custom string preview](yaksay-preview-custom_string.png)
 
-It is also possible to pass custom ascii to the program to be output instead of the default yak. This can be done with command `yaksay -f path/to/file.*` (the asterics denoting that file type doesn't matter). 
+It is also possible to pass custom ascii to the program to be output instead of the default yak. This can be done with the command `yaksay -f path/to/file.*` (the asterics denoting that file type doesn't matter). 
 
 To print helpful information, run the program with the `-h` flag. An extensive table of commands and related behavior can be found below.
 
