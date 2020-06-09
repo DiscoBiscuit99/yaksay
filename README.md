@@ -4,7 +4,7 @@ To install the program, run `cargo install yaksay` in your terminal. If you have
 
 ![Yaksay default preview](yaksay-preview-default.png)
 
-Running the command `yaksay` in the terminal will spawn the default yak saying "Mooh!" as seen above. The program can of course also be run with a custom input string, like `yaksay "Hello, World!"`. This can be seen below. (Be aware that it might be required to prepend a backslash to exclamation marks like so '\\!').
+Running the command `yaksay` in the terminal will spawn the default yak saying "Mooh!" as seen above. The program can of course also be run with a custom input string, like `yaksay "Hello, World!"`. This can be seen below. (Be aware that it might be required to prepend a backslash to exclamation marks like so: '\\!').
 
 ![Yaksay custom string preview](yaksay-preview-custom_string.png)
 
