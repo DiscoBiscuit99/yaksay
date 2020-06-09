@@ -6,7 +6,6 @@ edition = "2018"
 description = "Enhanced edition of cowsay"
 readme = "README.md"
 repository = "https://github.com/discobiscuit99/yaksay"
-license = "gpl-3.0"
 license-file = "LICENSE"
 keywords = ["cli"]
 categories = ["command-line-utilities"]
