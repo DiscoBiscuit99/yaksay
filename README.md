@@ -11,6 +11,7 @@ It is also possible to pass custom ascii to the program to be output instead of 
 | Flags and options                                | Behavior                                                                                                                        |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | `<message>`                                      | Message from the yak (optional, default: "Mooh!")                                                                               |
+| `-h`, `--help`                                   | Prints helpful information described in this table                                                                              |
 | `-d`, `--dead`                                   | Spawns a dead cow instead of the default live one.                                                                              |
 | `-b`, `--bored`                                  | Spawns a bored cow instead of the default happy one.                                                                            |
 | `-s`, `--surprised`                              | Spawns a surprised cow instead of the default happy one.                                                                        |
