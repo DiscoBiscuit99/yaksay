@@ -14,6 +14,12 @@ struct Options {
     #[structopt(default_value = "Mooh!")]
     /// What will the yak say?
     message: String,
+    #[structopt(short = "b", long = "bored")]
+    /// Spawn a bored yak instead of the default live one.
+    bored: bool,
+    #[structopt(short = "s", long = "surprised")]
+    /// Spawn a surprised yak instead of the default live one.
+    surprised: bool,
     #[structopt(short = "d", long = "dead")]
     /// Spawn a dead yak instead of the deafult live one.
     dead: bool,
@@ -29,18 +35,29 @@ fn main() -> Result<(), ExitFailure> {
     let options = Options::from_args();
     let mut message = String::new();
 
+    // Check for stdin.
     if options.stdin {
         io::stdin().read_to_string(&mut message)?;
     } else {
         message = options.message;
     }
 
+    // Print an error message if the yak neighs.
     if message.to_lowercase() == "neigh" {
         eprintln!("\nA yak doesn't neigh...");
     }
 
-    let yak: &str;
+    // Fail if both surprised and dead.
+    if options.dead && options.bored {
+        panic!("A yak can't be both bored and dead...");
+    } else if options.dead && options.surprised {
+        panic!("A yak can't be both surprised and dead...");
+    } else if options.bored && options.surprised {
+        panic!("A yak can't be both bored and surprised...");
+    }
 
+    // Check for different states.
+    let yak: &str;
     if options.dead {
         yak = r#"
     \
@@ -52,6 +69,40 @@ fn main() -> Result<(), ExitFailure> {
      \ '   (_/                        !!
       |       /)           '          !!!
       `\    x'            '     !    !!!!
+        !      _/! , !   !  ! !  !   !!!
+         \Y,   |!!!  !  ! !!  !! !!!!!!!
+           `!!! !!!! !!  )!!!!!!!!!!!!!
+            !!  ! ! \( \(  !!!|/!  |/!
+        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm
+        "#;    
+    } else if options.bored {
+        yak = r#"
+    \
+     \
+      \          _.-````'-,_
+       \     ,-'`           `'-.,_
+     /)     (\                   '``-.
+    ( ( .,-') )                      ``
+     \ '   (_/                        !!
+      |       /)           '          !!!
+      `\    -'            '     !    !!!!
+        !      _/! , !   !  ! !  !   !!!
+         \Y,   |!!!  !  ! !!  !! !!!!!!!
+           `!!! !!!! !!  )!!!!!!!!!!!!!
+            !!  ! ! \( \(  !!!|/!  |/!
+        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm
+        "#;    
+    } else if options.surprised {
+        yak = r#"
+    \
+     \
+      \          _.-````'-,_
+       \     ,-'`           `'-.,_
+     /)     (\                   '``-.
+    ( ( .,-') )                      ``
+     \ '   (_/                        !!
+      |       /)           '          !!!
+      `\    o'            '     !    !!!!
         !      _/! , !   !  ! !  !   !!!
          \Y,   |!!!  !  ! !!  !! !!!!!!!
            `!!! !!!! !!  )!!!!!!!!!!!!!
@@ -77,10 +128,12 @@ fn main() -> Result<(), ExitFailure> {
         "#;
     }
 
+    // Make a string with dashes the length of the message.
     let dashes: String = message.chars().map(|x| match x {
         _ => "-",
     }).collect();
 
+    // Print the message and the yak depending on the `-f` flag.
     match &options.yakfile {
         Some (path) => {
             let ascii = std::fs::read_to_string(path)
