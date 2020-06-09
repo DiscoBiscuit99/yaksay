@@ -1,4 +1,4 @@
-# Yaksay &mdash; Cowsay enhanced, maybe
+# Yaksay &ndash; Cowsay enhanced, maybe
 
 To install the program, run `cargo install yaksay` in your terminal. If you haven't changed your cargo install directory, it will then be installed to the .cargo/bin folder.
 
