@@ -6,7 +6,7 @@ Running the command `yaksay` in the terminal will spawn the default yak saying "
 
 It is also possible to pass custom ascii to the program to be output instead of the default yak. This can be done with command `yaksay -f path/to/file.*` (the asterics denoting that file type doesn't matter).
 
-### Command - Behavior table
+## Command - Behavior table
 
 | Flags and options                                | Behavior                                                                                                                        |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
