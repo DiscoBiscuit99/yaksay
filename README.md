@@ -2,9 +2,11 @@
 
 To install the program, run `cargo install yaksay` in your terminal. If you haven't changed your cargo install directory, it will be installed to the .cargo/bin folder.
 
-![Yaksay preview](yaksay-preview.png)
+![Yaksay default preview](yaksay-preview-default.png)
 
-Running the command `yaksay` in the terminal will spawn the default yak saying "Mooh!". The program can of course also be run with a custom input string, like `yaksay "Hello, World!"`. (Be aware that it might be required to prepend a backslash to exclamation marks like so '\!').
+Running the command `yaksay` in the terminal will spawn the default yak saying "Mooh!" as seen above. The program can of course also be run with a custom input string, like `yaksay "Hello, World!"`. This can be seen below. (Be aware that it might be required to prepend a backslash to exclamation marks like so '\!').
+
+![Yaksay custom string preview](yaksay-preview-custom_string.png)
 
 It is also possible to pass custom ascii to the program to be output instead of the default yak. This can be done with command `yaksay -f path/to/file.*` (the asterics denoting that file type doesn't matter). 
 
