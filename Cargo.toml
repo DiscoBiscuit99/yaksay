@@ -1,12 +1,13 @@
 [package]
 name = "yaksay"
-version = "1.1.0"
+version = "1.1.1"
 authors = ["Valdemar Lorenzen <valdemar.lorenzen@gmail.com>"]
 edition = "2018"
 description = "Enhanced edition of cowsay"
 readme = "README.md"
 repository = "https://github.com/discobiscuit99/yaksay"
-license = "MIT"
+license = "gpl-3.0"
+license-file = "LICENSE"
 keywords = ["cli"]
 categories = ["command-line-utilities"]
 
