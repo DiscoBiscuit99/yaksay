@@ -1,6 +1,18 @@
-# Yaksay
+# Yaksay &mdash; Cowsay enhanced, maybe
 
-Cowsay enhanced edition.
+To install the program, run `cargo install yaksay` in your terminal. If you haven't changed your cargo install directory, it will then be installed to the .cargo/bin folder.
 
-The crate can be run with the regular help flag (`yaksay -h`, `yaksay --help`).
+Running the command `yaksay` in the terminal will spawn the default yak saying "Mooh!". The program can of course also be run with a custom input string, like `yaksay "Hello, World!"`. (Be aware that it might be required to prepend a backslash to exclamation marks like so '\!').
 
+It is also possible to pass custom ascii to the program to be output instead of the default yak. This can be done with command `yaksay -f path/to/file.*` (the asterics denoting that file type doesn't matter).
+
+### Command - Behavior table
+
+| Flags and options                                | Behavior                                                                                                                        |
+|--------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| `<message>`                                      | Message from the yak (optional, default: "Mooh!")                                                                               |
+| `-d`, `--dead`                                   | Spawns a dead cow instead of the default live one.                                                                              |
+| `-b`, `--bored`                                  | Spawns a bored cow instead of the default happy one.                                                                            |
+| `-s`, `--surprised`                              | Spawns a surprised cow instead of the default happy one.                                                                        |
+| `-f <path/to/file.*>`, `--file <path/to/file.*>` | Prints custom ascii from file. The program reads the whole file to a string, so nothing but the ascii art should be in the file |
+| `-i`, `--stdin`                                  | Passes text from STDIN to the program (could be used like: `echo "Hello, World!" \| yaksay -i`)                                 |

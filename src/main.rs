@@ -18,10 +18,10 @@ struct Options {
     /// Spawn a bored yak instead of the default live one.
     bored: bool,
     #[structopt(short = "s", long = "surprised")]
-    /// Spawn a surprised yak instead of the default live one.
+    /// Spawn a surprised yak instead of the default happy one.
     surprised: bool,
     #[structopt(short = "d", long = "dead")]
-    /// Spawn a dead yak instead of the deafult live one.
+    /// Spawn a dead yak instead of the deafult happy one.
     dead: bool,
     #[structopt(short = "f", long = "file", parse(from_os_str))]
     /// Load custom ascii from the specified file.
