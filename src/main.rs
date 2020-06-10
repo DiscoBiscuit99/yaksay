@@ -58,7 +58,6 @@ fn main() -> Result<(), exitfailure::ExitFailure> {
     }
 
     let surprised_yak = r#"
-    \
      \
       \          _.-````'-,_
        \     ,-'`           `'-.,_
@@ -78,7 +77,6 @@ fn main() -> Result<(), exitfailure::ExitFailure> {
     let yak: &str;
     if options.dead {
         yak = r#"
-    \
      \
       \          _.-````'-,_
        \     ,-'`           `'-.,_
@@ -95,7 +93,6 @@ fn main() -> Result<(), exitfailure::ExitFailure> {
         "#;    
     } else if options.bored {
         yak = r#"
-    \
      \
       \          _.-````'-,_
        \     ,-'`           `'-.,_
@@ -114,7 +111,6 @@ fn main() -> Result<(), exitfailure::ExitFailure> {
         yak = surprised_yak;
     } else {
         yak = r#"
-    \
      \
       \          _.-````'-,_
        \     ,-'`           `'-.,_
