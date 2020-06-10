@@ -27,3 +27,10 @@ To print helpful information, run the program with the `-h` flag. An extensive t
 | `-s`, `--surprised`                              | Spawns a surprised cow instead of the default happy one.                                                                        |
 | `-f <path/to/file.*>`, `--file <path/to/ascii.*>` | Prints custom ascii from file. The program reads the whole file to a string, so nothing but the ascii art should be in the file |
 | `-i`, `--stdin`                                  | Passes text from STDIN to the program (could be used like: `echo "Hello, World!" \| yaksay -i`)                                 |
+
+## Todo
+
+- [ ] Clean the code a bit.
+
+Ideas are welcomed with great enthusiasm!
+
