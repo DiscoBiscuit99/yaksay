@@ -22,7 +22,8 @@ fn fail_on_both_dead_and_bored()
         .expect("Binary exists...")
         .args(&["-d", "-b"])
         .assert()
-        .failure();
+        .success()
+        .stderr(predicate::str::contains("Assuming the yak is quantum, it collapsed to one state..."));
     Ok(())
 }
 
@@ -33,7 +34,8 @@ fn fail_on_both_dead_and_surprised()
         .expect("Binary exists...")
         .args(&["-d", "-s"])
         .assert()
-        .failure();
+        .success()
+        .stderr(predicate::str::contains("Assuming the yak is quantum, it collapsed to one state..."));
     Ok(())
 }
 
@@ -44,7 +46,8 @@ fn fail_on_both_bored_and_surprised()
         .expect("Binary exists...")
         .args(&["-b", "-s"])
         .assert()
-        .failure();
+        .success()
+        .stderr(predicate::str::contains("Assuming the yak is quantum, it collapsed to one state..."));
     Ok(())
 }
 

@@ -44,16 +44,30 @@ fn main() -> Result<(), ExitFailure> {
 
     // Print an error message if the yak neighs.
     if message.to_lowercase() == "neigh" {
-        eprintln!("\nA yak doesn't neigh...");
+        let err = "A yak doesn't neigh...";
+        eprintln!("\n {}", err.bright_red());
     }
 
     // Fail if both surprised and dead.
+    //if options.dead && options.bored {
+        //let err = "A yak can't be both dead and bored...";
+        //eprintln!("\n {}", err.bright_red());
+    //} else if options.dead && options.surprised {
+        //let err = "A yak can't be both dead and surprised...";
+        //eprintln!("\n {}", err.bright_red());
+    //} else if options.bored && options.surprised {
+        //let err = "A yak can't be both bored and surprised...";
+        //eprintln!("\n {}", err.bright_red());
+    //}
+    
+    // Inform the user of the quantum collapse.
+    let err = "Assuming the yak is quantum, it collapsed to one state...";
     if options.dead && options.bored {
-        panic!("A yak can't be both bored and dead...");
+        eprintln!("\n {}", err.bright_red());
     } else if options.dead && options.surprised {
-        panic!("A yak can't be both surprised and dead...");
+        eprintln!("\n {}", err.bright_red());
     } else if options.bored && options.surprised {
-        panic!("A yak can't be both bored and surprised...");
+        eprintln!("\n {}", err.bright_red());
     }
 
     // Check for different states.
