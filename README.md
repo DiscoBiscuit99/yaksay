@@ -34,3 +34,7 @@ To print helpful information, run the program with the `-h` flag. An extensive t
 
 Ideas are welcomed with great enthusiasm!
 
+## Credits
+
+The default ascii art of the yak is assumingly a product an "Ejm". Thank you Ejm :)
+

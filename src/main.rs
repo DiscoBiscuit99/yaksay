@@ -70,8 +70,7 @@ fn main() -> Result<(), exitfailure::ExitFailure> {
          \Y,   |!!!  !  ! !!  !! !!!!!!!
            `!!! !!!! !!  )!!!!!!!!!!!!!
             !!  ! ! \( \(  !!!|/!  |/!
-        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm
-    "#;
+        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm"#;
 
     // Check for different states.
     let yak: &str;
@@ -89,8 +88,7 @@ fn main() -> Result<(), exitfailure::ExitFailure> {
          \Y,   |!!!  !  ! !!  !! !!!!!!!
            `!!! !!!! !!  )!!!!!!!!!!!!!
             !!  ! ! \( \(  !!!|/!  |/!
-        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm
-        "#;    
+        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm"#;    
     } else if options.bored {
         yak = r#"
      \
@@ -105,8 +103,7 @@ fn main() -> Result<(), exitfailure::ExitFailure> {
          \Y,   |!!!  !  ! !!  !! !!!!!!!
            `!!! !!!! !!  )!!!!!!!!!!!!!
             !!  ! ! \( \(  !!!|/!  |/!
-        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm
-        "#;    
+        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm"#;    
     } else if options.surprised {
         yak = surprised_yak;
     } else {
@@ -123,8 +120,7 @@ fn main() -> Result<(), exitfailure::ExitFailure> {
          \Y,   |!!!  !  ! !!  !! !!!!!!!
            `!!! !!!! !!  )!!!!!!!!!!!!!
             !!  ! ! \( \(  !!!|/!  |/!
-        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm
-        "#;
+        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm"#;
     }
 
     // Make a string with dashes the length of the message.
