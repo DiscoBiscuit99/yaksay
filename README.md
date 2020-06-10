@@ -30,6 +30,8 @@ To print helpful information, run the program with the `-h` flag. An extensive t
 
 ## Todo
 
+- [ ] Wrap long sentences
+- [ ] Implicitly read input from STDIN if detected
 - [ ] Clean the code a bit
 
 Ideas are welcomed with great enthusiasm!
