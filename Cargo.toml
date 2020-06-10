@@ -1,6 +1,6 @@
 [package]
 name = "yaksay"
-version = "1.2.0"
+version = "1.2.1"
 authors = ["Valdemar Lorenzen <valdemar.lorenzen@gmail.com>"]
 edition = "2018"
 description = "Enhanced edition of cowsay"
