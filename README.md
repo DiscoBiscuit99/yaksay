@@ -12,7 +12,7 @@ Running the command `yaksay` in the terminal will spawn the default yak saying "
 
 It is also possible to pass custom ascii to the program to be output instead of the default yak. This can be done with the command `yaksay -f path/to/file.*` (the asterics denoting that file type doesn't matter). 
 
-Keep in mind that there are essentially four states the yak can be in when printed, namely happy (default), bored, surprised or dead. The yak cannot be in either one of these states at the same time and as of now, the program will pick among the given states and print and error message before the yak informing the user that the yak collapsed to one of the given states (assuming it's a quantum yak).
+Keep in mind that there are essentially four states the yak can be in when printed, namely **happy** (default), **bored**, **surprised**, or **dead**. The yak cannot be in either one of these states at the same time and as of now, the program will pick among the given states and print and error message before the yak, informing the user that the yak collapsed to one of the given states (assuming it's a quantum yak).
 
 To print helpful information, run the program with the `-h` flag. An extensive table of commands and related behavior can be found below.
 
