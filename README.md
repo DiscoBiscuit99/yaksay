@@ -36,5 +36,5 @@ Ideas are welcomed with great enthusiasm!
 
 ## Credits
 
-The default ascii art of the yak is assumingly a product an "Ejm". Thank you Ejm :)
+The default ascii art of the yak is assumingly a product of an "Ejm". Thank you Ejm :)
 
