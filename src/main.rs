@@ -5,7 +5,6 @@ extern crate exitfailure;
 
 use structopt::StructOpt;
 use colored::*;
-use failure::ResultExt;
 use exitfailure::ExitFailure;
 use std::io::{self, Read};
 
@@ -31,7 +30,7 @@ struct Options {
     stdin: bool,
 }
 
-fn main() -> Result<(), ExitFailure> {
+fn main() -> Result<(), exitfailure::ExitFailure> {
     let options = Options::from_args();
     let mut message = String::new();
 
@@ -48,28 +47,32 @@ fn main() -> Result<(), ExitFailure> {
         let err = "A yak doesn't neigh...";
         eprintln!("\n {}", err.bright_red());
     }
-
-    // Fail if both surprised and dead.
-    //if options.dead && options.bored {
-        //let err = "A yak can't be both dead and bored...";
-        //eprintln!("\n {}", err.bright_red());
-    //} else if options.dead && options.surprised {
-        //let err = "A yak can't be both dead and surprised...";
-        //eprintln!("\n {}", err.bright_red());
-    //} else if options.bored && options.surprised {
-        //let err = "A yak can't be both bored and surprised...";
-        //eprintln!("\n {}", err.bright_red());
-    //}
     
-    // Inform the user of the quantum collapse.
-    let err = "Assuming the yak is quantum, it collapsed to one state...";
+    let mut in_multiple_states = false;
     if options.dead && options.bored {
-        eprintln!("\n {}", err.bright_red());
+        in_multiple_states = true;
     } else if options.dead && options.surprised {
-        eprintln!("\n {}", err.bright_red());
+        in_multiple_states = true;
     } else if options.bored && options.surprised {
-        eprintln!("\n {}", err.bright_red());
+        in_multiple_states = true;
     }
+
+    let surprised_yak = r#"
+    \
+     \
+      \          _.-````'-,_
+       \     ,-'`           `'-.,_
+     /)     (\                   '``-.
+    ( ( .,-') )                      ``
+     \ '   (_/                        !!
+      |       /)           '          !!!
+      `\    o'            '     !    !!!!
+        !      _/! , !   !  ! !  !   !!!
+         \Y,   |!!!  !  ! !!  !! !!!!!!!
+           `!!! !!!! !!  )!!!!!!!!!!!!!
+            !!  ! ! \( \(  !!!|/!  |/!
+        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm
+    "#;
 
     // Check for different states.
     let yak: &str;
@@ -108,22 +111,7 @@ fn main() -> Result<(), ExitFailure> {
         mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm
         "#;    
     } else if options.surprised {
-        yak = r#"
-    \
-     \
-      \          _.-````'-,_
-       \     ,-'`           `'-.,_
-     /)     (\                   '``-.
-    ( ( .,-') )                      ``
-     \ '   (_/                        !!
-      |       /)           '          !!!
-      `\    o'            '     !    !!!!
-        !      _/! , !   !  ! !  !   !!!
-         \Y,   |!!!  !  ! !!  !! !!!!!!!
-           `!!! !!!! !!  )!!!!!!!!!!!!!
-            !!  ! ! \( \(  !!!|/!  |/!
-        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm
-        "#;
+        yak = surprised_yak;
     } else {
         yak = r#"
     \
@@ -151,19 +139,42 @@ fn main() -> Result<(), ExitFailure> {
     // Print the message and the yak depending on the `-f` flag.
     match &options.yakfile {
         Some (path) => {
-            let ascii = std::fs::read_to_string(path)
-                .with_context(|_| format!("Could not read file {:?}", path))?;
+            let ascii = match std::fs::read_to_string(path) {
+                Ok(file_content) => {
+                    // Return the content with prepended `new line`.
+                    let mut fc: String = "\n".to_owned();
+                    let bs: &str = &file_content;
+                    fc.push_str(bs);
+                    fc
+                },
+                Err(_e) => {
+                    // Report `file not found` error to the user (assuming it's a `file not found` error).
+                    let err = "File not found:";
+                    eprintln!("\n {} {:?}", err.bright_red(), path);
+
+                    // Print the surprised yak and format it correctly.
+                    let ascii = String::from(surprised_yak);
+                    let ascii = ascii.trim_start_matches("\n");
+                    String::from(ascii)
+                },
+            };
 
             println!("\n +-{}-+", &dashes);
             println!(" | {} |", message.bright_yellow());
             println!(" +-{}-+", dashes);
-            println!("\n{}", ascii);
+            print!("{}", ascii);
         },
         None => {
+            if in_multiple_states {
+                // Inform the user of the quantum collapse.
+                let err = "Assuming the yak is quantum, it collapsed to one state...";
+                eprintln!("\n {}", err.bright_red());
+            }
+
             println!("\n +-{}-+", &dashes);
             println!(" | {} |", message.bright_yellow());
             print!(" +-{}-+", dashes);
-            println!("{}", yak);
+            print!("{}", yak);
         }
     }
 

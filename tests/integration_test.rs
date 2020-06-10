@@ -16,7 +16,7 @@ fn run_with_defaults()
 }
 
 #[test]
-fn fail_on_both_dead_and_bored()
+fn collapse_on_both_dead_and_bored()
     -> Result<(), Box<dyn std::error::Error>> {
     Command::cargo_bin("yaksay")
         .expect("Binary exists...")
@@ -28,7 +28,7 @@ fn fail_on_both_dead_and_bored()
 }
 
 #[test]
-fn fail_on_both_dead_and_surprised()
+fn collapse_on_both_dead_and_surprised()
     -> Result<(), Box<dyn std::error::Error>> {
     Command::cargo_bin("yaksay")
         .expect("Binary exists...")
@@ -40,7 +40,7 @@ fn fail_on_both_dead_and_surprised()
 }
 
 #[test]
-fn fail_on_both_bored_and_surprised()
+fn collapse_on_both_bored_and_surprised()
     -> Result<(), Box<dyn std::error::Error>> {
     Command::cargo_bin("yaksay")
         .expect("Binary exists...")
@@ -52,13 +52,14 @@ fn fail_on_both_bored_and_surprised()
 }
 
 #[test]
-fn fail_on_non_existing_file()
+fn inform_of_non_existing_file()
     -> Result<(), Box<dyn std::error::Error>> {
     Command::cargo_bin("yaksay")
         .expect("Binary exists...")
         .args(&["-f", "no/such/file.txt"])
         .assert()
-        .failure();
+        .success()
+        .stderr(predicate::str::contains("File not found:"));
     Ok(())
 }
 

@@ -1,7 +1,7 @@
 [package]
 name = "yaksay"
-version = "1.2.2"
-authors = ["Valdemar Lorenzen <valdemar.lorenzen@gmail.com>"]
+version = "1.2.3"
+authors = ["Valdemar Høgsvig Lorenzen <valdemar.lorenzen@gmail.com>"]
 edition = "2018"
 description = "Enhanced edition of cowsay"
 readme = "README.md"
