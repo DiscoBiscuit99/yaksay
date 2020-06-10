@@ -30,7 +30,7 @@ To print helpful information, run the program with the `-h` flag. An extensive t
 
 ## Todo
 
-- [ ] Clean the code a bit.
+- [ ] Clean the code a bit
 
 Ideas are welcomed with great enthusiasm!
 
