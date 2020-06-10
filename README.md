@@ -1,6 +1,6 @@
 # Yaksay &ndash; Cowsay enhanced, maybe
 
-[![GitHub version](https://img.shields.io/crates/v/yaksay?color=green&style=for-the-badge)](https://github.com/DiscoBiscuit99/yaksay)
+[![GitHub version](https://img.shields.io/crates/v/yaksay?color=green&style=for-the-badge)](https://crates.io/crates/yaksay)
 
 To install the program, run `cargo install yaksay` in your terminal. If you haven't changed your cargo install directory, it will be installed to the .cargo/bin folder.
 
