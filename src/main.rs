@@ -38,6 +38,7 @@ fn main() -> Result<(), ExitFailure> {
     // Check for stdin.
     if options.stdin {
         io::stdin().read_to_string(&mut message)?;
+        message.pop();
     } else {
         message = options.message;
     }
