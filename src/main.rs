@@ -13,6 +13,9 @@ struct Options {
     #[structopt(default_value = "Mooh!")]
     /// What will the yak say?
     message: String,
+    #[structopt(short = "c", long = "color", default_value = "yellow")]
+    /// How to color the input.
+    color: String,
     #[structopt(short = "b", long = "bored")]
     /// Spawn a bored yak instead of the default live one.
     bored: bool,
@@ -123,6 +126,22 @@ fn main() -> Result<(), exitfailure::ExitFailure> {
         mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm"#;
     }
 
+    let colored_message = match &options.color.to_lowercase()[..] {
+        "red" => message.bright_red(),
+        "green" => message.bright_green(),
+        "yellow" => message.bright_yellow(),
+        "blue" => message.bright_blue(),
+        "magenta" => message.bright_magenta(),
+        "cyan" => message.bright_cyan(),
+        "white" => message.bright_white(),
+        _ => {
+            // Inform the user that the color doesn't exist.
+            let err = "No such color, default (yellow) is used...";
+            eprintln!("\n {}", err.bright_red());
+            message.bright_yellow()
+        }
+    };
+
     // Make a string with dashes the length of the message.
     let dashes: String = message.chars().map(|x| match x {
         _ => "-",
@@ -152,7 +171,7 @@ fn main() -> Result<(), exitfailure::ExitFailure> {
             };
 
             println!("\n +-{}-+", &dashes);
-            println!(" | {} |", message.bright_yellow());
+            println!(" | {} |", colored_message);
             println!(" +-{}-+", dashes);
             print!("{}", ascii);
         },
@@ -164,7 +183,7 @@ fn main() -> Result<(), exitfailure::ExitFailure> {
             }
 
             println!("\n +-{}-+", &dashes);
-            println!(" | {} |", message.bright_yellow());
+            println!(" | {} |", colored_message);
             print!(" +-{}-+", dashes);
             print!("{}", yak);
         }
