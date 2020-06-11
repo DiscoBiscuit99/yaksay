@@ -6,7 +6,7 @@ To install the program, run `cargo install yaksay` in your terminal. If you have
 
 ![Yaksay default preview](yaksay-preview-default.png)
 
-Running the command `yaksay` in the terminal will spawn the default yak saying "Mooh!" as seen above. The program can of course also be run with a custom input string, like `yaksay "Hello, World!"`. This can be seen below. (Be aware that it might be required to prepend a backslash to exclamation marks like so: '\\!').
+Running the command `yaksay` in the terminal will spawn the default yak saying "Mooh!" as seen above. The program can of course also be run with a custom input string, like `yaksay "Hello, World!"`. This can be seen below. (Be aware that it might be required to prepend a backslash to exclamation marks like so: '\\!'). It is possible to color the message differently by setting a color using the color flag, i.e., `yaksay -c green` will display the default message in green. 
 
 ![Yaksay custom string preview](yaksay-preview-custom_string.png)
 
@@ -20,23 +20,25 @@ To print helpful information, run the program with the `-h` flag. An extensive t
 
 | Flags and options                                | Behavior                                                                                                                        |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| `<message>`                                      | Message from the yak (optional, default: "Mooh!")                                                                               |
-| `-h`, `--help`                                   | Prints helpful information described in this table                                                                              |
+| `<message>`                                      | Message from the yak (default: "Mooh!").                                                                                        |
+| `-h`, `--help`                                   | Prints helpful information described in this table.                                                                             |
 | `-d`, `--dead`                                   | Spawns a dead cow instead of the default live one.                                                                              |
 | `-b`, `--bored`                                  | Spawns a bored cow instead of the default happy one.                                                                            |
 | `-s`, `--surprised`                              | Spawns a surprised cow instead of the default happy one.                                                                        |
-| `-f <path/to/file.*>`, `--file <path/to/ascii.*>` | Prints custom ascii from file. The program reads the whole file to a string, so nothing but the ascii art should be in the file |
-| `-i`, `--stdin`                                  | Passes text from STDIN to the program (could be used like: `echo "Hello, World!" \| yaksay -i`)                                 |
+| `-i`, `--stdin`                                  | Passes text from STDIN to the program (could be used like: `echo "Hello, World!" \| yaksay -i`).                                |
+| `-V`, `--version`                                | Prints version information.                                                                                                     |
+| `-c`, `--color`                                  | Sets the color for the message to printed in (default: "yellow").                                                               |
+| `-f <path/to/file.*>`, `--file <path/to/ascii.*>`| Prints custom ascii from file. The program reads the whole file to a string, so nothing but the ascii art should be in the file.|
 
 ## Todo
 
 - [ ] Wrap long sentences
 - [ ] Implicitly read input from STDIN if detected
-- [ ] Clean the code a bit
+- [x] Clean the code a bit
 
 Ideas are welcomed with great enthusiasm!
 
 ## Credits
 
-The default ascii art of the yak is assumingly a product of an "Ejm". Thank you Ejm :)
+The default ascii art of the yak is assumingly a product of an "Ejm". Thank you Ejm, for yakifying the bison.
 
