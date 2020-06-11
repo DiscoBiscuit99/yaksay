@@ -1,4 +1,4 @@
-# Yaksay &ndash; Cowsay enhanced, maybe
+# Yaksay &ndash; Cowsay enhanced
 
 [![GitHub version](https://img.shields.io/crates/v/yaksay?color=green&style=for-the-badge)](https://crates.io/crates/yaksay)
 
