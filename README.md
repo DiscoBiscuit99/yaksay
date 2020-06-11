@@ -27,7 +27,7 @@ To print helpful information, run the program with the `-h` flag. An extensive t
 | `-s`, `--surprised`                              | Spawns a surprised cow instead of the default happy one.                                                                        |
 | `-i`, `--stdin`                                  | Passes text from STDIN to the program (could be used like: `echo "Hello, World!" \| yaksay -i`).                                |
 | `-V`, `--version`                                | Prints version information.                                                                                                     |
-| `-c`, `--color`                                  | Sets the color for the message to printed in (default: "yellow").                                                               |
+| `-c <color>`, `--color <color>`                  | Sets the color for the message to printed in (default: "yellow").                                                               |
 | `-f <path/to/file.*>`, `--file <path/to/ascii.*>`| Prints custom ascii from file. The program reads the whole file to a string, so nothing but the ascii art should be in the file.|
 
 ## Todo
