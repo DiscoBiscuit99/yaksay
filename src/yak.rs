@@ -1,7 +1,9 @@
+extern crate structopt;
+extern crate colored;
+extern crate textwrap;
+
 use structopt::StructOpt;
 use colored::*;
-
-use hyphenation::{Language, Load, Standard};
 use textwrap::Wrapper;
 
 #[derive(StructOpt)]
@@ -9,12 +11,15 @@ pub struct Options {
     #[structopt(default_value = "Mooh!")]
     /// What will the yak say?
     pub message: String,
-    #[structopt(short = "i", long = "stdin")]
-    /// Read the message from STDIN instead of the argument.
-    pub stdin: bool,
     #[structopt(short = "c", long = "color", default_value = "yellow")]
     /// How to color the input.
     color: String,
+    #[structopt(short = "w", long = "width", default_value = "40")]
+    /// Width for the text to wrap.
+    width: String,
+    #[structopt(short = "i", long = "stdin")]
+    /// Read the message from STDIN instead of the argument.
+    pub stdin: bool,
     #[structopt(short = "b", long = "bored")]
     /// Spawn a bored yak instead of the default live one.
     bored: bool,
@@ -38,37 +43,82 @@ pub fn check_for_neighs(message: &String) {
 }
 
 // Convert the message to a ColoredString.
-pub fn get_colored_message(message: &String, options: &Options) -> colored::ColoredString {
+pub fn get_colored_message(message: &String, options: &Options) -> Vec<colored::ColoredString> {
+    let width = options.width.parse::<usize>().unwrap();
+    let wrapped = textwrap::fill(message, width);
+    let lines: Vec<&str> = wrapped.lines().collect();
+    let mut colored_message: Vec<colored::ColoredString> = Vec::new();
     match &options.color.to_lowercase()[..] {
-        "red" => message.bright_red(),
-        "green" => message.bright_green(),
-        "yellow" => message.bright_yellow(),
-        "blue" => message.bright_blue(),
-        "magenta" => message.bright_magenta(),
-        "cyan" => message.bright_cyan(),
-        "white" => message.bright_white(),
+        "red" => {
+            for line in lines.into_iter() {
+                colored_message.push(line.bright_red());
+            }
+            colored_message
+        },
+        "green" => {
+            for line in lines.into_iter() {
+                colored_message.push(line.bright_green());
+            }
+            colored_message
+        },
+        "yellow" => {
+            for line in lines.into_iter() {
+                colored_message.push(line.bright_yellow());
+            }
+            colored_message
+        },
+        "blue" => {
+            for line in lines.into_iter() {
+                colored_message.push(line.bright_blue());
+            }
+            colored_message
+        },
+        "magenta" => {
+            for line in lines.into_iter() {
+                colored_message.push(line.bright_magenta());
+            }
+            colored_message
+        },
+        "cyan" => {
+            for line in lines.into_iter() {
+                colored_message.push(line.bright_cyan());
+            }
+            colored_message
+        },
+        "white" => {
+            for line in lines.into_iter() {
+                colored_message.push(line.bright_white());
+            }
+            colored_message
+        },
         _ => {
             // Inform the user that the color doesn't exist.
             let err = "No such color, default (yellow) is used...";
             eprintln!("\n {}", err.bright_red());
-            message.bright_yellow()
+
+            for line in lines.into_iter() {
+                colored_message.push(line.bright_yellow());
+            }
+            colored_message
         }
     }
 }
 
 // Get dashes equal to the length of the message.
-pub fn get_dashes(message: String) -> String {
-    message.chars().map(|x| match x {
-        _ => "-",
-    }).collect()
+pub fn get_dashes_and_width(options: &Options) -> String {
+    let mut dashes = String::new();
+    let width = &options.width.parse::<i32>().unwrap();
+    for _ in 0..*width {
+        dashes.push('-');
+    }
+    dashes
 }
 
 // Print the message and the yak depending on the `-f` flag.
-pub fn print_message_and_ascii(options: Options, message: colored::ColoredString, dashes: String) {
+pub fn print_message_and_ascii(options: Options, message: Vec<colored::ColoredString>, dashes: String) {
     let (yak, surprised_yak) = get_yaks(&options);
 
-    let dictionary = Standard::from_embedded(Language::EnglishUS).unwrap();
-    let wrapper = Wrapper::with_splitter(18, dictionary);
+    let width = &options.width.parse::<i32>().unwrap();
 
     match &options.yakfile {
         Some (path) => {
@@ -93,7 +143,16 @@ pub fn print_message_and_ascii(options: Options, message: colored::ColoredString
             };
 
             println!("\n +-{}-+", &dashes);
-            println!("{}", wrapper.fill(&message[..]));
+            // Print the message.
+            for line in message {
+                // Get the padding right.
+                let dif = *width as i32 - line.len() as i32;
+                let mut padding = String::new();
+                for _ in 0..dif.abs() {
+                    padding.push(' ');
+                }
+                println!(" | {}{} |", line, padding);
+            }
             println!(" +-{}-+", dashes);
             print!("{}", ascii);
         },
@@ -105,7 +164,16 @@ pub fn print_message_and_ascii(options: Options, message: colored::ColoredString
             }
 
             println!("\n +-{}-+", &dashes);
-            println!("{}", wrapper.fill(&message[..]));
+            // Print the message.
+            for line in message {
+                // Get the padding right.
+                let dif = *width as i32 - line.len() as i32;
+                let mut padding = String::new();
+                for _ in 0..dif.abs() {
+                    padding.push(' ');
+                }
+                println!(" | {}{} |", line, padding);
+            }
             print!(" +-{}-+", dashes);
             print!("{}", yak);
         }
