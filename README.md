@@ -38,6 +38,7 @@ To print helpful information, run the program with the `-h` flag. An extensive t
 - [x] Sentence wrapping
 - [x] Abundance of expressions
 - [x] Display message in color
+- [x] Ability to load custom ascii
 - [ ] Different border styles
 - [ ] More ascii-yaks to choose from
 - [ ] External storage of ascii-yaks
