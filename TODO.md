@@ -1,2 +1,2 @@
-+ Write more integration tests
++ More integration tests
 + Handle invalid UTF-8 
