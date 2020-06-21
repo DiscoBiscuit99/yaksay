@@ -6,13 +6,13 @@ use colored::*;
 
 #[derive(StructOpt)]
 pub struct Options {
-    #[structopt(default_value = "Mooh!")]
+    #[structopt(default_value = "     Mooh!")]
     /// What will the yak say?
     pub message: String,
     #[structopt(short = "c", long = "color", default_value = "yellow")]
     /// How to color the input.
     color: String,
-    #[structopt(short = "w", long = "width", default_value = "40")]
+    #[structopt(short = "w", long = "width", default_value = "15")]
     /// Width for the text to wrap.
     width: String,
     #[structopt(short = "i", long = "stdin")]
