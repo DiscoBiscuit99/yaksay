@@ -6,7 +6,7 @@ use colored::*;
 
 #[derive(StructOpt)]
 pub struct Options {
-    #[structopt(default_value = "     Mooh!")]
+    #[structopt(default_value = "Mooh!")]
     /// What will the yak say?
     pub message: String,
     #[structopt(short = "c", long = "color", default_value = "yellow")]
@@ -103,11 +103,17 @@ pub fn get_colored_message(message: &String, options: &Options) -> Vec<ColoredSt
 }
 
 // Get dashes equal to the length of the message.
-pub fn get_dashes_and_width(options: &Options) -> String {
+pub fn get_dashes_and_width(options: &Options, message: &Vec<ColoredString>) -> String {
     let mut dashes = String::new();
     let width = &options.width.parse::<i32>().unwrap();
-    for _ in 0..*width {
-        dashes.push('-');
+    if message.len() > 1 {
+        for _ in 0..*width {
+            dashes.push('=');
+        }
+    } else {
+        for _ in 0..message[0].len() {
+            dashes.push('=');
+        }
     }
     dashes
 }
@@ -142,12 +148,14 @@ pub fn print_message_and_ascii(options: Options, message: Vec<ColoredString>, da
 
             println!("\n +-{}-+", &dashes);
             // Print the message.
-            for line in message {
+            for line in &message {
                 // Get the padding right.
                 let dif = *width as i32 - line.len() as i32;
-                let mut padding = String::new();
-                for _ in 0..dif.abs() {
-                    padding.push(' ');
+                let mut padding = String::from("");
+                if message.len() > 1 {
+                    for _ in 0..dif.abs() {
+                        padding.push(' ');
+                    }
                 }
                 println!(" | {}{} |", line, padding);
             }
@@ -163,12 +171,14 @@ pub fn print_message_and_ascii(options: Options, message: Vec<ColoredString>, da
 
             println!("\n +-{}-+", &dashes);
             // Print the message.
-            for line in message {
+            for line in &message {
                 // Get the padding right.
                 let dif = *width as i32 - line.len() as i32;
-                let mut padding = String::new();
-                for _ in 0..dif.abs() {
-                    padding.push(' ');
+                let mut padding = String::from("");
+                if message.len() > 1 {
+                    for _ in 0..dif.abs() {
+                        padding.push(' ');
+                    }
                 }
                 println!(" | {}{} |", line, padding);
             }

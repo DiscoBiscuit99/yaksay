@@ -21,7 +21,7 @@ fn main() {
     yak::check_for_neighs(&message);
 
     let colored_message = yak::get_colored_message(&message, &options); 
-    let dashes = yak::get_dashes_and_width(&options);
+    let dashes = yak::get_dashes_and_width(&options, &colored_message);
 
     yak::print_message_and_ascii(options, colored_message, dashes);
 }

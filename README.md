@@ -10,6 +10,8 @@ Running the command `yaksay` in the terminal will spawn the default yak saying "
 
 ![Yaksay custom string preview](yaksay-preview-custom_string.png)
 
+Running yaksay like so: `yaksay -w <number>`, appending the `--width` flag, one is able to set the desired width (measured in characters) of the sentences before wrapping. If a sentence is not long enough to wrap at the desired length, the borders will shrink and snap to the text. The default width is 15 characters.
+
 It is also possible to pass custom ascii to the program to be output instead of the default yak. This can be done with the command `yaksay -f path/to/ascii.*` (the asterics denoting that file type doesn't matter). 
 
 Keep in mind that there are essentially four states the yak can be in when printed, namely **happy** (default), **bored**, **surprised**, or **dead**. The yak cannot be in either one of these states at the same time and as of now, the program will pick among the given states and print an error message before the yak, informing the user that the yak collapsed to one of the given states (assuming it's a quantum yak).
@@ -31,14 +33,18 @@ To print helpful information, run the program with the `-h` flag. An extensive t
 | `-w <number>`, `--width <number>`                | Sets the wrapping width of the text in characters (default: `15`).                                                              |
 | `-f <path/to/file.*>`, `--file <path/to/ascii.*>`| Prints custom ascii from file. The program reads the whole file to a string, so nothing but the ascii art should be in the file.|
 
-## Todo
+## Features
 
-- [x] Wrap long sentences
+- [x] Sentence wrapping
+- [x] Abundance of expressions
+- [x] Display message in color
+- [ ] Different border styles
+- [ ] More ascii-yaks to choose from
+- [ ] External storage of ascii-yaks
 - [ ] Implicitly read input from STDIN if detected
-- [x] Clean the code a bit
 
 Ideas are welcomed with great enthusiasm!
 
-## Credits
+## ASCII-credits
 
 The default ascii art of the yak is assumingly a product of an "Ejm". Thank you Ejm, for yakifying the bison.
