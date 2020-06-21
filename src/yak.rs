@@ -1,8 +1,8 @@
-extern crate structopt;
-extern crate colored;
-
 use structopt::StructOpt;
 use colored::*;
+
+use hyphenation::{Language, Load, Standard};
+use textwrap::Wrapper;
 
 #[derive(StructOpt)]
 pub struct Options {
@@ -67,6 +67,9 @@ pub fn get_dashes(message: String) -> String {
 pub fn print_message_and_ascii(options: Options, message: colored::ColoredString, dashes: String) {
     let (yak, surprised_yak) = get_yaks(&options);
 
+    let dictionary = Standard::from_embedded(Language::EnglishUS).unwrap();
+    let wrapper = Wrapper::with_splitter(18, dictionary);
+
     match &options.yakfile {
         Some (path) => {
             let ascii = match std::fs::read_to_string(path) {
@@ -90,7 +93,7 @@ pub fn print_message_and_ascii(options: Options, message: colored::ColoredString
             };
 
             println!("\n +-{}-+", &dashes);
-            println!(" | {} |", message);
+            println!("{}", wrapper.fill(&message[..]));
             println!(" +-{}-+", dashes);
             print!("{}", ascii);
         },
@@ -102,7 +105,7 @@ pub fn print_message_and_ascii(options: Options, message: colored::ColoredString
             }
 
             println!("\n +-{}-+", &dashes);
-            println!(" | {} |", message);
+            println!("{}", wrapper.fill(&message[..]));
             print!(" +-{}-+", dashes);
             print!("{}", yak);
         }
