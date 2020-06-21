@@ -1,10 +1,8 @@
 extern crate structopt;
 extern crate colored;
-extern crate textwrap;
 
 use structopt::StructOpt;
 use colored::*;
-use textwrap::Wrapper;
 
 #[derive(StructOpt)]
 pub struct Options {
@@ -43,11 +41,11 @@ pub fn check_for_neighs(message: &String) {
 }
 
 // Convert the message to a ColoredString.
-pub fn get_colored_message(message: &String, options: &Options) -> Vec<colored::ColoredString> {
+pub fn get_colored_message(message: &String, options: &Options) -> Vec<ColoredString> {
     let width = options.width.parse::<usize>().unwrap();
     let wrapped = textwrap::fill(message, width);
     let lines: Vec<&str> = wrapped.lines().collect();
-    let mut colored_message: Vec<colored::ColoredString> = Vec::new();
+    let mut colored_message: Vec<ColoredString> = Vec::new();
     match &options.color.to_lowercase()[..] {
         "red" => {
             for line in lines.into_iter() {
@@ -115,7 +113,7 @@ pub fn get_dashes_and_width(options: &Options) -> String {
 }
 
 // Print the message and the yak depending on the `-f` flag.
-pub fn print_message_and_ascii(options: Options, message: Vec<colored::ColoredString>, dashes: String) {
+pub fn print_message_and_ascii(options: Options, message: Vec<ColoredString>, dashes: String) {
     let (yak, surprised_yak) = get_yaks(&options);
 
     let width = &options.width.parse::<i32>().unwrap();
