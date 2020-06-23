@@ -15,9 +15,9 @@ pub struct Options {
     #[structopt(short = "w", long = "width", default_value = "15")]
     /// Width for the text to wrap.
     width: String,
-    #[structopt(long = "border-style", default_value = "fancy")]
+    #[structopt(long = "border", default_value = "fancy")]
     /// Set the border style of the enclosure displaying the message.
-    border_style: String,
+    border: String,
     #[structopt(short = "i", long = "stdin")]
     /// Read the message from STDIN instead of the argument.
     pub stdin: bool,
@@ -110,7 +110,7 @@ pub fn get_dashes_and_width(options: &Options, message: &Vec<ColoredString>) -> 
     let mut dashes = String::new();
     let width = &options.width.parse::<i32>().unwrap();
     if message.len() > 1 {
-        match options.border_style.to_lowercase().as_str() {
+        match options.border.to_lowercase().as_str() {
             "fancy" => {
                 for _ in 0..*width {
                     dashes.push('=');
@@ -132,7 +132,7 @@ pub fn get_dashes_and_width(options: &Options, message: &Vec<ColoredString>) -> 
             },
         }
     } else {
-        match options.border_style.to_lowercase().as_str() {
+        match options.border.to_lowercase().as_str() {
             "fancy" => {
                 for _ in 0..message[0].len() {
                     dashes.push('=');
