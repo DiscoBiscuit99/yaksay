@@ -15,6 +15,9 @@ pub struct Options {
     #[structopt(short = "w", long = "width", default_value = "15")]
     /// Width for the text to wrap.
     width: String,
+    #[structopt(long = "border-style", default_value = "fancy")]
+    /// Set the border style of the enclosure displaying the message.
+    border_style: String,
     #[structopt(short = "i", long = "stdin")]
     /// Read the message from STDIN instead of the argument.
     pub stdin: bool,
@@ -90,8 +93,8 @@ pub fn get_colored_message(message: &String, options: &Options) -> Vec<ColoredSt
             colored_message
         },
         _ => {
-            // Inform the user that the color doesn't exist.
-            let err = "No such color, default (yellow) is used...";
+            // Inform the user that no such color exists.
+            let err = "No such color, default value (yellow) is used instead...";
             eprintln!("\n {}", err.bright_red());
 
             for line in lines.into_iter() {
@@ -107,12 +110,48 @@ pub fn get_dashes_and_width(options: &Options, message: &Vec<ColoredString>) -> 
     let mut dashes = String::new();
     let width = &options.width.parse::<i32>().unwrap();
     if message.len() > 1 {
-        for _ in 0..*width {
-            dashes.push('=');
+        match options.border_style.to_lowercase().as_str() {
+            "fancy" => {
+                for _ in 0..*width {
+                    dashes.push('=');
+                }
+            },
+            "thin" => {
+                for _ in 0..*width {
+                    dashes.push('-');
+                }
+            },
+            _ => {
+                // Inform the user that the border style doesn't exist, `fancy` will be used instead.
+                let err = "No such border style, default value (fancy) used instead...";
+                eprintln!("\n {}", err.bright_red());
+
+                for _ in 0..*width {
+                    dashes.push('=');
+                }
+            },
         }
     } else {
-        for _ in 0..message[0].len() {
-            dashes.push('=');
+        match options.border_style.to_lowercase().as_str() {
+            "fancy" => {
+                for _ in 0..message[0].len() {
+                    dashes.push('=');
+                }
+            },
+            "thin" => {
+                for _ in 0..message[0].len() {
+                    dashes.push('-');
+                }
+            },
+            _ => {
+                // Inform the user that the border style doesn't exist, `fancy` will be used instead.
+                let err = "No such border style, default value (fancy) used instead...";
+                eprintln!("\n {}", err.bright_red());
+
+                for _ in 0..message[0].len() {
+                    dashes.push('=');
+                }
+            },
         }
     }
     dashes
@@ -228,7 +267,8 @@ fn get_yaks(options: &Options) -> (String, &str) {
          \Y,   |!!!  !  ! !!  !! !!!!!!!
            `!!! !!!! !!  )!!!!!!!!!!!!!
             !!  ! ! \( \(  !!!|/!  |/!
-        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm"#, eyes);
+        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm
+    "#, eyes);
 
     // The surprised yak.
     let surprised_yak = r#"
@@ -244,7 +284,8 @@ fn get_yaks(options: &Options) -> (String, &str) {
          \Y,   |!!!  !  ! !!  !! !!!!!!!
            `!!! !!!! !!  )!!!!!!!!!!!!!
             !!  ! ! \( \(  !!!|/!  |/!
-        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm"#;
+        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm
+    "#;
 
     // Return the two.
     (yak, surprised_yak)

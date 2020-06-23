@@ -25,3 +25,4 @@ fn main() {
 
     yak::print_message_and_ascii(options, colored_message, dashes);
 }
+

@@ -29,20 +29,21 @@ To print helpful information, run the program with the `-h` flag. An extensive t
 | `-s`, `--surprised`                              | Spawns a surprised cow instead of the default happy one.                                                                        |
 | `-i`, `--stdin`                                  | Passes text from STDIN to the program (could be used like: `echo "Hello, World!" \| yaksay -i`).                                |
 | `-V`, `--version`                                | Prints version information.                                                                                                     |
+| `--border-style <style>`						   | Sets the style of the border displaying the message (default: `fancy`).                                                         |
 | `-c <color>`, `--color <color>`                  | Sets the color for the message to printed in (default: `yellow`).                                                               |
 | `-w <number>`, `--width <number>`                | Sets the wrapping width of the text in characters (default: `15`).                                                              |
 | `-f <path/to/file.*>`, `--file <path/to/ascii.*>`| Prints custom ascii from file. The program reads the whole file to a string, so nothing but the ascii art should be in the file.|
 
 ## Features
 
-- [x] Sentence wrapping
-- [x] Abundance of expressions
-- [x] Display message in color
-- [x] Ability to load custom ascii
-- [ ] Different border styles
-- [ ] More ascii-yaks to choose from
-- [ ] External storage of ascii-yaks
-- [ ] Implicitly read input from STDIN if detected
++ [x] Sentence wrapping
++ [x] Abundance of expressions
++ [x] Display message in color
++ [x] Ability to load custom ascii
++ [x] Different border styles
++ [ ] More ascii-yaks to choose from
++ [ ] External storage of ascii-yaks
++ [ ] Implicitly read input from STDIN if detected
 
 Ideas are welcomed with great enthusiasm!
 
