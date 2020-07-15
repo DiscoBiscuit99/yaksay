@@ -241,7 +241,7 @@ fn in_multiple_states(options: &Options) -> bool {
 }
 
 // Return the relevant yaks.
-fn get_yaks(options: &Options) -> (String, &str) {
+fn get_yaks(options: &Options) -> (String, String) {
     // Get the eyes.
     let eyes = if options.dead {
         "x"
@@ -267,11 +267,10 @@ fn get_yaks(options: &Options) -> (String, &str) {
          \Y,   |!!!  !  ! !!  !! !!!!!!!
            `!!! !!!! !!  )!!!!!!!!!!!!!
             !!  ! ! \( \(  !!!|/!  |/!
-        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm
-    "#, eyes);
+        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm{newline}"#, eyes, newline = "\n");
 
     // The surprised yak.
-    let surprised_yak = r#"
+    let surprised_yak = format!(r#"
      \
       \          _.-````'-,_
        \     ,-'`           `'-.,_
@@ -284,8 +283,7 @@ fn get_yaks(options: &Options) -> (String, &str) {
          \Y,   |!!!  !  ! !!  !! !!!!!!!
            `!!! !!!! !!  )!!!!!!!!!!!!!
             !!  ! ! \( \(  !!!|/!  |/!
-        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm
-    "#;
+        mic & dwb  /_(/_(    /_(  /_(    bison yakified by ejm{newline}"#, newline = "\n");
 
     // Return the two.
     (yak, surprised_yak)
