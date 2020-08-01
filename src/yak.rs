@@ -164,7 +164,7 @@ pub fn print_message_and_ascii(options: Options, message: Vec<ColoredString>, da
     let width = &options.width.parse::<i32>().unwrap();
 
     match &options.yakfile {
-        Some (path) => {
+        Some(path) => {
             let ascii = match std::fs::read_to_string(path) {
                 Ok(file_content) => {
                     // Return the content with prepended `new line`.
