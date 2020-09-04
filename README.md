@@ -49,4 +49,4 @@ Ideas are welcomed with great enthusiasm!
 
 ## ASCII-credits
 
-The default ascii art of the yak is assumingly a product of an "Ejm". Thank you Ejm, for yakifying the bison.
+The default ascii art of the yak is assumedly a product of an "Ejm". Thank you Ejm, for yakifying the bison.
